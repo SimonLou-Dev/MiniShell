@@ -1,0 +1,3 @@
+L'objectif est de faire un mini bash coloré 
+
+Les commandes supprotés echo, cd, pwd, mv, cp, mkdir, rm (-R), ls 
