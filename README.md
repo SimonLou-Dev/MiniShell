@@ -23,13 +23,21 @@ Pour commencer j'ai écrit comment je pensait faire fonctionner l'algorithme et 
 
 ## Les commandes 
 
-### Implémentés : pwd *(sans options)*, echo*(sans options)*, cd *(sans options)*, mv *(sans options)*, cp *(sans options)*, mkdir *(sans options)*, rm (avec l'option -R), ls *(sans options)*
+### Implémentés : 
+  * pwd *(sans options)*,
+  * echo *(sans options)*, 
+  * cd *(sans options)*, 
+  * mv *(sans options)*, 
+  * cp *(sans options)*, 
+  * mkdir *(sans options)*, 
+  * rm (avec l'option -R), 
+  * ls *(sans options)*
 
 ### L'objectif :
-	- Les commandes php, 
-	- Commandes powersell avec la commande pwsh
-	- Commandes pour se connecter à mysql
-	- Commandes pour se connecter en ssh
+  * Les commandes php, 
+  * Commandes powersell avec la commande pwsh
+  * Commandes pour se connecter à mysql
+  * Commandes pour se connecter en ssh
 
 
 ## Langage et outils
