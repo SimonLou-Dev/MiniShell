@@ -30,7 +30,6 @@ public class Distrubutor
             if(current.StartsWith("--") || current.StartsWith('-')) options.Add(current);
             else args.Add(current);
         }
-
         this.commandFinder();
     }
 
@@ -51,6 +50,8 @@ public class Distrubutor
             case "ls":
                 ListCommand.execute(args, options);
                 break;
+            case "cd":
+                
             default:
                 PromptPlus.WriteLine(
                     "[RED] Cette commande n'éxiste pas ! Tappez [GREEN] help [/] pour avoir la liste des commande");
@@ -58,7 +59,13 @@ public class Distrubutor
             
         }
         
-        
+        clearingClass();
+    }
+
+    private void clearingClass()
+    {
+        args = new List<string>();
+        options = new List<string>();
     }
 
 

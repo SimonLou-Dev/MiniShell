@@ -1,4 +1,5 @@
-﻿using PPlus;
+﻿using MiniShell.FileManager;
+using PPlus;
 
 namespace MiniShell.Command.Commands;
 
@@ -7,45 +8,17 @@ public class ListCommand : Commands
     public static void execute(List<string> args, List<string> options)
     {
 
-        string finalPath = Program.getCurrentDir();
-        
-        PromptPlus.WriteLine("[GREY] " + finalPath);
-
-        if (args.Count != 0)
+        if (args.Count == 0) args.Add("");
+        try
         {
-            string searchDir = args[0];
-            string[] firstFile = searchDir.Split("\\");
-            if (searchDir.StartsWith("\\") || firstFile[0].EndsWith(":\\"))
-            {
-                finalPath = searchDir;
-            }
-            else
-            {
-                searchDir = searchDir.Replace("/", "\\");
-                if (searchDir.StartsWith(".\\")) searchDir = searchDir.Substring(2);
-                finalPath += searchDir;
-                
-                
-                /*
-                 * TODO ./ ../ ../../
-                 */
-            }
+            string finalPath = PathFinder.getAboslutePath(args[0]);
+        
+            display(listDir(finalPath), finalPath);
         }
-
-        if (File.Exists(finalPath))
+        catch (Exception e)
         {
-            PromptPlus.WriteLine("[RED] " + finalPath + " est un fichier, ls permet de lister le contenue d'un répertoire. \n [GREEN] help [/] pour plus d'informations");
-            return;
-        }else if (!Directory.Exists(finalPath))
-        {
-            PromptPlus.WriteLine("[RED] " + finalPath + " le répertoire n'éxiste pas");
-            return;
+            Console.WriteLine(e.Message);
         }
-       
-        
-        display(listDir(finalPath), finalPath);
-        
-        return;
         
     }
 
