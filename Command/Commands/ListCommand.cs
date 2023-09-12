@@ -1,4 +1,5 @@
-﻿using MiniShell.FileManager;
+﻿using MiniShell.Exceptions;
+using MiniShell.FileManager;
 using PPlus;
 
 namespace MiniShell.Command.Commands;
@@ -12,6 +13,11 @@ public class ListCommand : Commands
         try
         {
             string finalPath = PathFinder.getAboslutePath(args[0]);
+            
+            if (File.Exists(finalPath))
+            {
+                throw new IsNotDirException(finalPath);
+            }
         
             display(listDir(finalPath), finalPath);
         }

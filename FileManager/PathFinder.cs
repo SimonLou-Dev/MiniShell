@@ -9,16 +9,16 @@ public class PathFinder
     {
         string finalPath = Program.getCurrentDir();
         
-        if (path != "")
+        if (path != "" && path.Contains(":\\"))
         {
             finalPath = Path.GetFullPath(path);
+        }else if (path != "" && !path.Contains(":\\"))
+        {
+            finalPath = Path.GetFullPath(path, finalPath);
         }
 
 
-        if (File.Exists(finalPath))
-        {
-            throw new IsNotDirException(finalPath);
-        }else if (!Directory.Exists(finalPath))
+        if (!Directory.Exists(finalPath))
         {
             throw new DirNotExistException(finalPath);
         }

@@ -3,6 +3,7 @@
 using System.Globalization;
 using System.Security.Principal;
 using MiniShell.Command;
+using MiniShell.FileManager;
 using PPlus;
 using PPlus.Controls;
 
@@ -54,12 +55,14 @@ public class Program
         
         
        
-        while (running){
-            string[] dirs = Environment.CurrentDirectory.Split("\\");
-            string currentDir = dirs[dirs.Length - 1];
+        while (running)
+        {
+
+            string currentDir = DirectoryFinder.getCurrentDir();
             var inputCommand = PromptPlus.Input((this.elevated ? "\u26a1" : "\ud83d\udd12" ) +   " [#700cf2]" + userName + "@" + machineName + "[/] [#fc5203]"  + currentDir + "[/]>").Run();
             
             this.Distrubutor.commandParser(inputCommand.Value);
+
             
         } 
     }
@@ -67,6 +70,11 @@ public class Program
     public static string getCurrentDir()
     {
         return currentDir;
+    }
+
+    public static void setCurrentDir(string newDir)
+    {
+        currentDir = newDir;
     }
     
 }
