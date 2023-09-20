@@ -8,7 +8,22 @@ public class GitCommand : Commands
 {
     public static void execute(List<string> args, List<string> options)
     {
-        PromptPlus.WriteLine(CommandOutput("git status"));
+        //PromptPlus.WriteLine();
+        PromptPlus.WriteLine("\n");
+        string completeCommand = "git";
+
+        foreach (var arg in args)
+        {
+            completeCommand += " " + arg;
+        }
+        
+        foreach (var option in options)
+        {
+            completeCommand +=  " " +  option;
+        }
+
+        PromptPlus.WriteLine(completeCommand);
+        CommandOutput(completeCommand);
     }
 
     public static void displayHelp()
@@ -38,16 +53,18 @@ public class GitCommand : Commands
             proc.OutputDataReceived += delegate (object sender, DataReceivedEventArgs e)
             {
                 sb.AppendLine(e.Data);
+                PromptPlus.WriteLine(e.Data + "\n");
             };
             proc.ErrorDataReceived += delegate (object sender, DataReceivedEventArgs e)
             {
                 sb.AppendLine(e.Data);
+                PromptPlus.WriteLine("[RED]" + e.Data + "[/] \n");
             };
 
             proc.Start();
             proc.BeginOutputReadLine();
             proc.BeginErrorReadLine();
-            proc.WaitForExit();
+            //proc.WaitForExit();
             return sb.ToString();
         }
         catch (Exception objException)
