@@ -53,6 +53,9 @@ public class Distrubutor
             case "cd":
                 ChangeDirCommand.execute(args, options);
                 break;
+            case "git":
+                GitCommand.execute(args, options);
+                break;
             default:
                 PromptPlus.WriteLine(
                     "[RED] Cette commande n'éxiste pas ! Tappez [GREEN] help [/] pour avoir la liste des commande");
