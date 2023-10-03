@@ -56,6 +56,9 @@ public class Distrubutor
             case "git":
                 GitCommand.execute(args, options);
                 break;
+            case "clear":
+                ClearCommand.execute(args, options);
+                break;
             default:
                 PromptPlus.WriteLine(
                     "[RED] Cette commande n'éxiste pas ! Tappez [GREEN] help [/] pour avoir la liste des commande");
